@@ -1,64 +1,42 @@
 ﻿using System;
 
-namespace _27._03._22.task2
+namespace _27._03._22.task4
 {
-
-    //task2:Göndərilmiş string dəyərin aşğıdaki şərtləri ödəyib ödəmədiyini (bool) qaytaran metod.
     internal class Program
     {
+
+        //Verilmiş string dəyərin içərisində 2 söz olmasını və hər bir sözün böyük hərflə başlamasını yoxlayan metod
         static void Main(string[] args)
         {
             string sentence = Console.ReadLine();
-            Console.WriteLine(sentence2(sentence));
-      
-        
+            Console.WriteLine(findsentence(sentence));
         }
-
-        public static bool sentence2(string sentence)
+        public static bool findsentence(string sentence)
         {
-
-            if (true)
+            bool Check = false;
+            bool bigFirstsentence = false;
+            bool bigSecondsentence = false;
+            string[] strArr = sentence.Split();
+            if (strArr.Length == 2)
             {
-                bool hasDigit = false;
-                bool hasUpper = false;
-                bool hasLower = false;
-                foreach (char item in sentence)
+                string Firstsentence = strArr[0];
+                string Secondsentence = strArr[1];
+                if (Firstsentence[0] == char.ToUpper(Firstsentence[0]))
                 {
-                    if (char.IsDigit(item))
-                    {
-                        hasDigit = true;
-                        continue;
+                    bigFirstsentence = true;
 
-                    }
-                    if (char.IsUpper(item))
-                    {
-                        hasUpper = true;
-                        continue;
-
-                    }
-                    if (char.IsLower(item))
-                    {
-                        hasLower = true;
-                        continue;
-
-                    }
                 }
-                bool result = hasDigit && hasLower && hasUpper;
-                return result;
+                if (Secondsentence[0] == char.ToUpper(Secondsentence[0]))
+                {
+                    bigSecondsentence = true;
+
+                }
+
+
 
             }
-            return false;
-
-
-
-
-
-
-
-
-
-
-
+            Check = bigSecondsentence && bigFirstsentence;
+            return Check;
         }
     }
 }
